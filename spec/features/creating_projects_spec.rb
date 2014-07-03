@@ -10,6 +10,12 @@ feature 'Creating Projects' do
     fill_in 'Description', with: 'A text-editor for OS X'
     click_button 'Create Project'
 
+    project = Project.where(name: "TextMate 2").first
+
     expect(page).to have_content('Project has been created.')
+
+    title = "Textmate 2 - Projects - Ticketee"
+
+    expect(page).to have_title title
   end
 end
